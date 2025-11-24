@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Irfan | Aspiring Product Manager | Digital Adoption</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Load Chart.js for live data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    
+    <style>
+        /* Custom Theme Overrides for Maximum Impact & Readability */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #08080d; /* Very dark background */
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .hero-gradient {
+            /* Increased color opacity for more vibrant hero background */
+            background: radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+                        radial-gradient(ellipse at top right, rgba(147, 51, 234, 0.25) 0%, transparent 50%),
+                        linear-gradient(180deg, #08080d 0%, #15151e 100%);
+        }
+
+        .section-separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.6), rgba(147, 51, 234, 0.6), transparent);
+            margin: 3rem 0;
+        }
+
+        .modern-card {
+            background: rgba(18, 18, 25, 0.95); /* Slightly darker card base */
+            border: 1px solid #334155; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Increased shadow depth */
+            transition: all 0.3s ease;
+        }
+
+        .modern-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+        }
+
+        /* Modal specific styling */
+        .modal-content {
+            background-color: #15151e; 
+            border-color: #334155; 
+            width: 95%;
+            max-width: 1400px; 
+            max-height: 95vh;
+            border-radius: 0.75rem;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .modal-bg {
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fixed-center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Figma iframe wrapper to ensure background matches */
+        .figma-embed-container {
+            background-color: #0f172a; 
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        /* T-Model specific coloring */
+        .deep-skill { border-bottom: 4px solid #3b82f6; }
+        .broad-skill { border-bottom: 4px solid #8b5cf6; }
+
+        /* Custom emphasis class for text formerly using **markdown** */
+        .skill-item { font-weight: 700; color: #e2e8f0; } /* Light white/slate for readability */
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 w-full bg-black/95 backdrop-blur-md border-b border-gray-800 z-50 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#home" class="text-2xl font-black text-blue-400 tracking-wide">
+                    IRFAN PM
+                </a>
+                
+                <div class="hidden md:flex space-x-8 text-sm font-semibold">
+                    <a href="#home" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a>
+                    <a href="#competencies" class="text-white hover:text-blue-400 transition-colors duration-300">Competencies</a>
+                    <a href="#projects" class="text-white hover:text-blue-400 transition-colors duration-300">Impact Stories</a>
+                    <a href="#journey" class="text-white hover:text-blue-400 transition-colors duration-300">Experience</a>
+                    <a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-white hover:text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <!-- Mobile links will be populated by JS -->
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 1. Hero Section: Impact First (Focus on PM Value) -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-32 pb-16 px-4 sm:px-6 lg:px-8 hero-gradient relative">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Column: The PM Pitch -->
+            <div class="lg:col-span-8 text-center lg:text-left">
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-6 leading-none">
+                    I Close the <span class="text-purple-400">Adoption Gap</span>
+                    <span class="block text-blue-400">to Drive ROI.</span>
+                </h1>
+                
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl lg:max-w-none mx-auto lg:mx-0">
+                    Aspiring Product Manager (ex-Digital Adoption Specialist). I use deep business analysis and data to solve complex user friction points and deliver guaranteed ROI.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-6">
+                    <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold shadow-2xl transition-all">
+                        See Proven Impact Cases (ROI)
+                    </a>
+                    <a href="https://www.linkedin.com/in/syed-irfan-056b69197" target="_blank" class="border-2 border-gray-600 hover:border-purple-400 text-white hover:text-purple-400 px-8 py-3 rounded-xl font-bold bg-transparent transition-all">
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Column: Key Metrics Showcase -->
+            <div class="lg:col-span-4 flex justify-center relative mt-12 lg:mt-0">
+                 <div class="w-full modern-card p-8 rounded-xl text-center">
+                    <h3 class="text-xl font-extrabold text-blue-400 mb-4">Key Business Impact</h3>
+                    <div class="space-y-5">
+                        <div class="border-b border-gray-700 pb-4">
+                            <p class="text-5xl font-black text-green-400">
+                                $490K
+                            </p>
+                            <p class="text-sm text-slate-300 mt-1">ROI Delivered from Single Enterprise Implementation (Siemens)</p>
+                        </div>
+                        <div class="border-b border-gray-700 pb-4">
+                            <p class="text-5xl font-black text-purple-400">
+                                50%
+                            </p>
+                            <p class="text-sm text-slate-300 mt-1">Reduction in Workflow Completion Time (WSDOT)</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-black text-blue-400">
+                                100%
+                            </p>
+                            <p class="text-sm text-slate-300 mt-1">Client Retention Rate Across 25+ Enterprise Accounts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Core Competencies: The T-Model Section -->
+    <section id="competencies" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#15151e] relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My T-Shaped Product Competencies</h2>
+                <p class="text-gray-400 text-lg">
+                    I pair deep, unique expertise in digital adoption (vertical) with broad skills essential for any PM (horizontal).
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Deep Vertical 1 (The Base of the T) - CLEANED: Removed ** from text -->
+                <div class="md:col-span-1 modern-card p-6 rounded-lg deep-skill">
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-400">Digital Adoption & PM Core</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center"><span class="text-green-400 mr-2">•</span> <span class="skill-item">Value Realization (ROI)</span></li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2">•</span> <span class="skill-item">User Onboarding Strategy</span></li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2">•</span> <span class="skill-item">Enterprise Stakeholder Mgt</span></li>
+                        <li class="flex items-center"><span class="text-green-400 mr-2">•</span> <span class="skill-item">PMP Project Delivery</span></li>
+                    </ul>
+                </div>
+
+                <!-- Broad Horizontal Skills (The Top of the T) - CLEANED: Removed ** from text -->
+                <div class="md:col-span-3 space-y-4">
+                    <!-- UX / DESIGN -->
+                    <div class="modern-card p-6 rounded-lg broad-skill">
+                        <h3 class="text-lg font-extrabold mb-3 text-purple-400">UX & Design Strategy (Figma Focus)</h3>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">Figma Prototyping</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">User Flow Mapping</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">Information Architecture</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">UX Optimization</span>
+                        </div>
+                    </div>
+                    <!-- DATA / ANALYTICS -->
+                    <div class="modern-card p-6 rounded-lg broad-skill">
+                        <h3 class="text-lg font-extrabold mb-3 text-green-400">Data, Analytics & BI</h3>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">Pendo & Whatfix Analytics</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">Power BI & Looker</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">SQL Queries & Reporting</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">A/B Testing Methodology</span>
+                        </div>
+                    </div>
+                    <!-- TECHNICAL / TOOLING -->
+                    <div class="modern-card p-6 rounded-lg broad-skill">
+                        <h3 class="text-lg font-extrabold mb-3 text-blue-400">Technical Literacy & Tooling</h3>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">HTML/CSS/JS (Dev Communication)</span>
+                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">CRM/CLM/HCM Configuration</span>
+                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">API Integration Concepts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="max-w-7xl mx-auto section-separator"></div>
+
+    <!-- 3. Projects Section: Metric-First Grid -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#08080d] relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Product Impact Stories</h2>
+                <p class="text-slate-400 text-lg">
+                    Each project began with a core business problem and resulted in measurable digital adoption success.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1: WSDOT -->
+                <div class="modern-card p-6 rounded-xl group hover:border-blue-500">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-extrabold text-blue-400 mb-2">WSDOT: 50% Time Reduction</h3>
+                        <p class="text-slate-300 mb-4 font-semibold">Goal: Streamline Material Verification & Reporting</p>
+                        <ul class="text-slate-400 mb-4 text-sm space-y-1 flex-grow">
+                            <li>Problem: Manual data entry and disconnected workflows caused delays.</li>
+                            <li>Solution: Integrated MFV/IDR forms and enforced data flow rules.</li>
+                            <li>Result: Halved user time spent on mandatory reporting, increasing efficiency.</li>
+                        </ul>
+                        <button onclick="openModal(1)" class="text-purple-400 hover:text-purple-300 font-bold flex items-center transition-colors mt-auto">
+                            View Full Case Study & Documentation
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 w-4 h-4"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: FIS Horizon -->
+                <div class="modern-card p-6 rounded-xl group hover:border-green-500">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-extrabold text-green-400 mb-2">FIS Horizon: 98% Completion Rate</h3>
+                        <p class="text-slate-300 mb-4 font-semibold">Goal: Fix Critical 66% User Abandonment Rate</p>
+                        <ul class="text-slate-400 mb-4 text-sm space-y-1 flex-grow">
+                            <li>Problem: High drop-off (66%) in Alternate Address workflow due to UX friction.</li>
+                            <li>Solution: Deployed highly contextual Smart Tips based on App Diagnostics data.</li>
+                            <li>Result: Lifted success rate to 98%, demonstrating data-driven UX fixes.</li>
+                        </ul>
+                        <button onclick="openModal(2)" class="text-purple-400 hover:text-purple-300 font-bold flex items-center transition-colors mt-auto">
+                            View Full Case Study & Documentation
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 w-4 h-4"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Professional Journey / Education -->
+    <section id="journey" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#15151e] relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
+                <p class="text-slate-400 text-lg">
+                    The path that built a Product Manager mindset.
+                </p>
+            </div>
+
+            <div class="relative max-w-3xl mx-auto">
+                <div class="absolute left-2 top-0 bottom-0 w-0.5 bg-gray-700"></div>
+                
+                <!-- Item 1: Whatfix -->
+                <div class="relative pl-10 pb-12">
+                    <div class="absolute left-0 top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-[#15151e]"></div>
+                    <h4 class="font-bold text-xl text-blue-400">Digital Adoption Specialist, Whatfix</h4>
+                    <p class="text-slate-300 text-sm mb-2">Feb 2022 - Present</p>
+                    <p class="text-slate-400 text-sm">
+                        Driving strategic digital adoption across 25+ Fortune 500 accounts (Merck, Microsoft). Focused on identifying business requirements, designing DAP solutions, and measuring success against client ROI goals.
+                    </p>
+                </div>
+                
+                <!-- Item 2: Awards/Cert -->
+                <div class="relative pl-10 pb-12">
+                    <div class="absolute left-0 top-1 w-4 h-4 bg-yellow-500 rounded-full border-4 border-[#15151e]"></div>
+                    <h4 class="font-bold text-xl text-yellow-400">Key Recognition & Certification</h4>
+                    <p class="text-slate-300 text-sm mb-2">FY23 H1 / 2024</p>
+                    <ul class="text-slate-400 text-sm list-disc list-inside">
+                        <li>Awarded Most Valuable Digital Adoption Advisor.</li>
+                        <li>Completed Pendo Product Management and PMP Exam Prep.</li>
+                        <li>Spot Award winner for managing high-risk churn accounts.</li>
+                    </ul>
+                </div>
+
+                <!-- Item 3: APSSDC -->
+                <div class="relative pl-10 pb-12">
+                    <div class="absolute left-0 top-1 w-4 h-4 bg-green-500 rounded-full border-4 border-[#15151e]"></div>
+                    <h4 class="font-bold text-xl text-green-400">Front-End Developer, APSSDC</h4>
+                    <p class="text-slate-300 text-sm mb-2">Feb 2021 - Nov 2021</p>
+                    <p class="text-slate-400 text-sm">
+                        Hands-on experience in the technical implementation of web experiences, strengthening ability to communicate effectively with engineering teams.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#08080d] relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build the Next Product Success.</h2>
+            <p class="text-gray-300 text-lg mb-10">
+                I am actively seeking roles where my blend of business analysis, UX/design empathy, and quantifiable results can drive product strategy.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+                <!-- Direct Contact -->
+                <div class="space-y-6 modern-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-400">Direct Contact</h3>
+                    
+                    <div class="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400 w-6 h-6 flex-shrink-0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <div>
+                            <p class="text-slate-300 font-medium">isyed9233@gmail.com</p>
+                            <p class="text-slate-500 text-sm">Email (Preferred)</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/syed-irfan-056b69197" target="_blank" class="flex items-center space-x-4 hover:text-blue-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 w-6 h-6 flex-shrink-0"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <div>
+                            <p class="text-slate-300 font-medium">LinkedIn Profile</p>
+                            <p class="text-slate-500 text-sm">Connect Professionally</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Contact Form (Non-functional HTML version) -->
+                <div class="modern-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">Send a Quick Inquiry (Demo)</h3>
+                    <form onsubmit="event.preventDefault(); showMessage('Please use the email/LinkedIn links above to ensure I receive your message directly!', 'error');">
+                        <input type="text" placeholder="Your Name" required class="w-full bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg mb-3 focus:ring-2 focus:ring-blue-400 outline-none">
+                        <input type="email" placeholder="Your Company Email" required class="w-full bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg mb-3 focus:ring-2 focus:ring-blue-400 outline-none">
+                        <textarea rows="3" placeholder="Briefly state your inquiry..." required class="w-full bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg mb-4 focus:ring-2 focus:ring-blue-400 outline-none resize-none"></textarea>
+                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-xl transition-all">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                    <div id="message-status" class="mt-4 text-center text-sm font-medium"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 border-t border-gray-800 bg-[#15151e]">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-400">
+            &copy; 2024 Syed Irfan. Designed for Product Management Transition.
+        </div>
+    </footer>
+    
+    <!-- Modals (Case Study Deep Dive) -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden modal-bg overflow-y-auto" onclick="closeModal()">
+        <div class="modal-content fixed-center m-4 p-6 rounded-xl shadow-2xl overflow-y-auto" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-400 transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+            <div id="modal-body" class="p-4">
+                <!-- Content injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // --- DATA STRUCTURE: Project Content (from original project files) ---
+        const projectsData = [
+            null, 
+            {
+                title: "WSDOT Material Field Verification Enhancement",
+                subtitle: "Strategic Process Optimization & Digital Adoption",
+                description: "Integration of MFV with IDR workflows in Oracle Primavera Unifier, eliminating redundant processes and reducing completion time by 50%. This project demonstrates strong Business Analysis and solution design.",
+                presentationFile: "USE CASE __.pdf", 
+                downloadLink: "https://drive.google.com/file/d/1PHjCgQ7gEkEkEXrVmY6QivBQZLxXuBrw/view?usp=sharing", // WSDOT LINK
+                figmaEmbedCode: `
+                    <!-- Interactive Chart Container for WSDOT: Beacon Usage -->
+                    <div class="chart-container">
+                        <h4 class="text-lg font-semibold text-white mb-2 text-center">WSDOT: Beacon Usage Growth Post-Implementation</h4>
+                        <canvas id="wsdotChart"></canvas>
+                        <p class="text-sm text-slate-400 text-center mt-2">Visualization of the successful feature adoption (Beacon usage) over five months.</p>
+                    </div>
+                `,
+                tags: ["Process Integration", "Workflow Optimization", "Government Solutions", "Oracle Primavera"],
+                caseStudy: {
+                    challenge: "Washington State Department of Transport struggled with disconnected Material Field Verification (MFV) and Inspector Daily Report (IDR) processes. Users manually managed separate records, causing significant time delays, redundant efforts, and increased errors.",
+                    solution: "Leveraged Whatfix Digital Adoption Platform to create an integrated workflow, allowing direct MFV creation within IDR. This streamlined data flow and deployed proactive contextual guidance to users.",
+                    results: [
+                        { metric: "Completion Time", value: "50% Faster", icon: "⚡" },
+                        { metric: "Process Integration", value: "MFV + IDR", icon: "🔗" },
+                        { metric: "Manual Steps", value: "Eliminated", icon: "✅" },
+                        { metric: "ROI Potential", value: "High", icon: "💰" }
+                    ],
+                    methodology: [
+                        "Conducted end-to-end workflow and user journey analysis to isolate friction points.",
+                        "Documented 'To-Be' process flows and defined critical data requirements.",
+                        "Collaborated with implementation teams to translate business logic into DAP solutions.",
+                        "Monitored post-launch analytics to ensure sustained adoption and ROI."
+                    ],
+                    chartData: {
+                        labels: ['Jan', 'Feb', 'Mar', 'April', 'May'],
+                        data: [150, 110, 117, 98, 170],
+                        type: 'line',
+                        title: 'Beacon Usage (Adoption)'
+                    }
+                }
+            },
+            {
+                title: "FIS Horizon - App Diagnostics Implementation",
+                subtitle: "Data-Driven UX Enhancement for Financial Services",
+                description: "Strategic implementation of Whatfix DAP for the FIS Horizon application. Designed guidance and created an analytics framework to enhance user experience, focusing on critical drop-off points.",
+                presentationFile: "Copy of FIS Horizon - App Diagnostics by Whatfix.pdf", 
+                downloadLink: "https://drive.google.com/file/d/1x2FoDSUQbr_I96WFlCR8jZH77t_GWwRt/view?usp=sharing", // FIS LINK
+                figmaEmbedCode: `
+                    <!-- Interactive Chart Container for FIS: Completion Rates -->
+                    <div class="chart-container">
+                        <h4 class="text-lg font-semibold text-white mb-2 text-center">FIS Horizon: Completion Rates of Key Processes</h4>
+                        <canvas id="fisChart"></canvas>
+                        <p class="text-sm text-slate-400 text-center mt-2">Visualization of process success rates, highlighting where intervention led to high completion.</p>
+                    </div>
+                `,
+                tags: ["Digital Adoption", "App Diagnostics", "User Experience", "Analytics Framework"],
+                caseStudy: {
+                    challenge: "FIS Horizon XE faced major workflow completion challenges: 27% drop-off in Phone Transfer, 66% abandonment in Alternate Address process, resulting in poor user perception and high support costs.",
+                    solution: "Conducted App Diagnostics analysis across 41K unique users. Designed UX solutions implemented via DAP, including contextual Smart Tips and automated defaults to guide users through complex, high-friction steps.",
+                    results: [
+                        { metric: "Users Analyzed", value: "41,000+", icon: "👥" },
+                        { metric: "Phone Transfer Rate", value: "73%", icon: "📱" },
+                        { metric: "Address Process Rate", value: "98%", icon: "🏠" },
+                        { metric: "Support Tickets", value: "Reduced", icon: "📉" }
+                    ],
+                    methodology: [
+                        "Used event tracking to map user drop-off funnels (App Diagnostics).",
+                        "Prioritized fixes based on friction vs. business criticality.",
+                        "Developed targeted recommendations and documented solution architecture.",
+                        "Monitored impact on task completion rates and time-to-completion."
+                    ],
+                    chartData: {
+                        labels: ['Phone Transfer', 'Alt. Address', 'Sweep Transfer', 'Board a Loan'],
+                        data: [73, 98, 17, 6.6],
+                        type: 'bar',
+                        title: 'Process Completion Rate (%)'
+                    }
+                }
+            }
+        ];
+
+        // --- MODAL AND UTILITY LOGIC ---
+
+        const modal = document.getElementById('project-modal');
+        const modalBody = document.getElementById('modal-body');
+
+        function drawChart(id, data, title, color) {
+            const ctx = document.getElementById(id).getContext('2d');
+            
+            // Convert percent data to absolute values for visualization
+            const processedData = data.data.map(val => data.type === 'bar' ? val : val);
+
+            new Chart(ctx, {
+                type: data.type,
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: title,
+                        data: processedData,
+                        backgroundColor: data.type === 'bar' ? 'rgba(59, 130, 246, 0.7)' : 'rgba(102, 255, 102, 0.2)',
+                        borderColor: color,
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointBackgroundColor: color,
+                        fill: data.type === 'line'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        title: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + (data.type === 'bar' ? '%' : ' Users');
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#334155', // Slate-700 for grid lines
+                            },
+                            ticks: {
+                                color: '#94a3b8', // Slate-400 for labels
+                                callback: function(value) {
+                                     return value + (data.type === 'bar' ? '%' : '');
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#94a3b8', // Slate-400 for labels
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function openModal(id) {
+            const project = projectsData[id];
+            if (!project) return;
+            
+            // Use the provided Drive link
+            const fileLink = project.downloadLink; 
+
+            let html = `
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-extrabold text-white mb-1">${project.title}</h2>
+                    <p class="text-purple-400 font-semibold mb-4">${project.subtitle}</p>
+                    <div class="flex flex-wrap gap-2 pt-2 border-b border-slate-700 pb-4">
+                        ${project.tags.map(tag => `<span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">${tag}</span>`).join('')}
+                    </div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8 pt-4">
+                        <!-- Left Column: Live Charts / Artifacts -->
+                        <div class="space-y-6">
+                            <div class="pb-3">
+                                <h3 class="text-xl font-bold flex items-center text-purple-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                    Project Data Visualization
+                                </h3>
+                                <p class="text-slate-500 text-sm mt-1">Key metrics extracted directly from the supporting documentation.</p>
+                            </div>
+                            <div class="h-[550px]">
+                                ${project.figmaEmbedCode}
+                            </div>
+                        </div>
+
+                        <!-- Case Study Details Column -->
+                        <div class="space-y-6 lg:border-l lg:border-slate-800 lg:pl-8">
+                            
+                            <!-- Challenge -->
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 flex items-center text-red-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"></circle><path d="M15 9l-6 6"></path><path d="m9 9 6 6"></path></svg>
+                                    1. The Challenge
+                                </h3>
+                                <p class="text-slate-300 leading-relaxed">${project.caseStudy.challenge}</p>
+                            </div>
+
+                            <!-- Solution -->
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 flex items-center text-blue-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v6a2 2 0 0 0 2 2h6"></path></svg>
+                                    2. The Solution (Product Action)
+                                </h3>
+                                <p class="text-slate-300 leading-relaxed">${project.caseStudy.solution}</p>
+                            </div>
+
+                            <!-- Results -->
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 flex items-center text-green-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.9-2.9-4.7 4.7"></path></svg>
+                                    3. Measurable Results
+                                </h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    ${project.caseStudy.results.map(result => `
+                                        <div class="bg-slate-800 border border-slate-700 p-4 rounded-lg text-center">
+                                            <div class="text-2xl mb-2 text-white">${result.icon}</div>
+                                            <div class="text-xl font-extrabold text-blue-300 mb-1">${result.value}</div>
+                                            <div class="text-xs text-slate-400">${result.metric}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <!-- Methodology -->
+                            <div class="pt-2">
+                                <h3 class="text-xl font-bold mb-3 flex items-center text-purple-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    4. My Product Approach
+                                </h3>
+                                <ul class="space-y-2 text-slate-300 list-disc list-inside text-sm">
+                                    ${project.caseStudy.methodology.map(step => `<li>${step}</li>`).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- Presentation Download -->
+                            <div class="border-t border-slate-700 mt-6 pt-6">
+                                <h3 class="text-lg font-semibold mb-3 text-white">Full Documentation</h3>
+                                <a href="${fileLink}" target="_blank" class="flex items-center space-x-4 p-4 bg-slate-800 border border-slate-700 rounded-lg transition-all hover:bg-slate-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 flex-shrink-0"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+                                    <div class="flex-1 text-left">
+                                        <p class="font-semibold text-white">View Case Study PDF on Google Drive</p>
+                                        <p class="text-xs text-slate-400">Click to open external document: ${project.presentationFile}</p>
+                                    </div>
+                                    <div class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full flex-shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            `;
+            modalBody.innerHTML = html;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; 
+            
+            // Draw the chart after the modal is opened and the canvas element is in the DOM
+            if (id === 1 && project.caseStudy.chartData) {
+                drawChart('wsdotChart', project.caseStudy.chartData, 'Beacon Usage (Adoption)', 'rgb(59, 130, 246)');
+            } else if (id === 2 && project.caseStudy.chartData) {
+                 drawChart('fisChart', project.caseStudy.chartData, 'Process Completion Rate (%)', 'rgb(16, 185, 129)');
+            }
+
+        }
+
+        function closeModal() {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            modalBody.innerHTML = '';
+            document.body.style.overflow = '';
+        }
+
+        function showMessage(msg, type) {
+            const statusDiv = document.getElementById('message-status');
+            statusDiv.textContent = msg;
+            statusDiv.className = 'mt-4 text-center text-sm font-medium p-3 rounded-lg transition-all duration-300';
+            if (type === 'success') {
+                statusDiv.classList.add('bg-green-500/20', 'text-green-400');
+            } else if (type === 'error') {
+                statusDiv.classList.add('bg-red-500/20', 'text-red-400');
+            }
+            setTimeout(() => {
+                statusDiv.textContent = '';
+                statusDiv.className = 'mt-4 text-center text-sm font-medium';
+            }, 5000);
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
