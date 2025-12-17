@@ -6,94 +6,50 @@
     <title>Syed Irfan | Aspiring Product Manager | Digital Adoption</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <!-- Load Chart.js for live data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     
     <style>
-                @keyframes gradientMove {
-                    0% { background-position: 0% 50%; }
-                    100% { background-position: 100% 50%; }
-                }
-                .animate-gradient {
-                    background-size: 200% 200%;
-                    animation: gradientMove 3s linear infinite alternate;
-                }
-        /* Custom Theme Overrides for Maximum Impact & Readability */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #08080d; /* Very dark background */
-            color: #ffffff;
-            min-height: 100vh;
-        }
+        /* Cyber-Security Neon Theme + Matrix Background */
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        body { font-family: 'Inter', 'Fira Code', monospace; background: #05060a; color: #e6f3ea; min-height: 100vh; }
 
-        .hero-gradient {
-            /* Increased color opacity for more vibrant hero background */
-            background: radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
-                        radial-gradient(ellipse at top right, rgba(147, 51, 234, 0.25) 0%, transparent 50%),
-                        linear-gradient(180deg, #08080d 0%, #15151e 100%);
-        }
+        /* Matrix canvas sits behind content */
+        #matrix-canvas { position: fixed; inset: 0; z-index: -10; width: 100%; height: 100%; display: block; }
 
-        .section-separator {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.6), rgba(147, 51, 234, 0.6), transparent);
-            margin: 3rem 0;
-        }
+        .hero-gradient { background: linear-gradient(180deg, rgba(2,6,23,0.65) 0%, rgba(8,10,20,0.7) 100%); }
 
-        .modern-card {
-            background: rgba(18, 18, 25, 0.95); /* Slightly darker card base */
-            border: 1px solid #334155; 
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Increased shadow depth */
-            transition: all 0.3s ease;
-        }
+        .neon-text { color: #7efc4d; text-shadow: 0 0 10px rgba(126,252,77,0.15), 0 0 30px rgba(126,252,77,0.06); }
+        .neon-accent { border-color: rgba(126,252,77,0.2); box-shadow: 0 6px 30px rgba(34,197,94,0.06); }
 
-        .modern-card:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-        }
+        .section-separator { height: 1px; background: linear-gradient(90deg, transparent, rgba(126,252,77,0.6), rgba(14,165,233,0.4), transparent); margin: 3rem 0; }
 
-        /* Modal specific styling */
-        .modal-content {
-            background-color: #15151e; 
-            border-color: #334155; 
-            width: 95%;
-            max-width: 1400px; 
-            max-height: 95vh;
-            border-radius: 0.75rem;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .modal-bg {
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .fixed-center {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+        .modern-card { background: rgba(6,8,14,0.75); border: 1px solid rgba(34,197,94,0.06); box-shadow: 0 8px 30px rgba(2,6,23,0.6); transition: all 0.28s ease; }
+        .modern-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(14,165,233,0.06); border-color: rgba(14,165,233,0.14); }
 
-        /* Figma iframe wrapper to ensure background matches */
-        .figma-embed-container {
-            background-color: #0f172a; 
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
+        .modal-content { background-color: #06070b; border-color: rgba(34,197,94,0.06); width: 95%; max-width: 1100px; max-height: 95vh; border-radius: 0.75rem; overflow-y: auto; position: relative; }
+        .modal-bg { background-color: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; }
+        .fixed-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-        /* T-Model specific coloring */
-        .deep-skill { border-bottom: 4px solid #3b82f6; }
-        .broad-skill { border-bottom: 4px solid #8b5cf6; }
+        .figma-embed-container { background-color: #071022; padding: 1rem; border-radius: 0.5rem; }
 
-        /* Custom emphasis class for text formerly using **markdown** */
-        .skill-item { font-weight: 700; color: #e2e8f0; } /* Light white/slate for readability */
+        .deep-skill { border-bottom: 4px solid rgba(126,252,77,0.12); }
+        .broad-skill { border-bottom: 4px solid rgba(56,189,248,0.12); }
+
+        .skill-item { font-weight: 700; color: #cfeee0; }
+
+        /* Terminal styles */
+        .terminal { background: linear-gradient(180deg,#021018,#04121a); color: #bfeec9; font-family: 'Fira Code', monospace; padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(14,165,233,0.06); box-shadow: 0 10px 40px rgba(2,6,23,0.6); }
+        .terminal .prompt { color: #7efc4d; font-weight: 700; }
+        .btn-terminal { background: rgba(14,165,233,0.06); color: #bfeec9; border: 1px solid rgba(14,165,233,0.08); padding: 0.6rem 1rem; border-radius: 0.5rem; }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) { .hero-gradient { padding-top: 2.5rem; } }
     </style>
 </head>
 <body class="antialiased">
+    <canvas id="matrix-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="sticky top-0 w-full bg-black/95 backdrop-blur-md border-b border-gray-800 z-50 shadow-2xl">
@@ -127,16 +83,19 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center relative z-10">
             <div class="lg:col-span-7 px-6 lg:px-0 text-center lg:text-left">
                 <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-tight text-white drop-shadow-lg">Syed Irfan</h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl lg:max-w-none">
-                    Product manager in training with a background in digital adoption — I turn complex product signals into clear, measurable outcomes. I focus on business impact through UX, analytics and SQL-driven decisions.
+                <p id="hero-subtitle" class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl lg:max-w-none">
+                    Product manager in training with a cybersecurity-minded approach — I blend digital adoption, secure-by-design thinking, and analytics to turn product signals into measurable outcomes.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-6">
-                    <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold shadow-2xl transition-all">
-                        See Proven Impact Cases
-                    </a>
-                    <a href="https://www.linkedin.com/in/syed-irfan-056b69197" target="_blank" class="border-2 border-gray-600 hover:border-purple-400 text-white hover:text-purple-400 px-8 py-3 rounded-xl font-bold bg-transparent transition-all">
-                        Connect on LinkedIn
-                    </a>
+                        <a href="#projects" class="btn-terminal bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-bold shadow-2xl transition-all">
+                            View Impact
+                        </a>
+                        <button id="open-terminal-btn" class="btn-terminal border-2 border-transparent hover:border-green-400 px-6 py-3 rounded-xl font-bold bg-transparent transition-all">
+                            Terminal Demo
+                        </button>
+                        <a href="https://www.linkedin.com/in/syed-irfan-056b69197" target="_blank" class="border-2 border-gray-600 hover:border-green-400 text-white hover:text-green-400 px-6 py-3 rounded-xl font-bold bg-transparent transition-all">
+                            LinkedIn
+                        </a>
                 </div>
             </div>
 
@@ -384,6 +343,23 @@
         </div>
     </div>
     
+    <!-- Terminal Demo Modal -->
+    <div id="terminal-modal" class="fixed inset-0 z-[110] hidden modal-bg overflow-y-auto" onclick="closeTerminal()">
+        <div class="modal-content fixed-center m-4 p-6 rounded-xl shadow-2xl overflow-y-auto" onclick="event.stopPropagation()">
+            <button onclick="closeTerminal()" class="absolute top-4 right-4 text-white hover:text-gray-400 transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+            <div class="p-4">
+                <h3 class="text-xl font-bold neon-text mb-4">Terminal Demo — Simulated Pen-Test Flow</h3>
+                <div id="terminal-output" class="terminal h-64 overflow-auto text-sm"></div>
+                <div class="mt-4 flex gap-2">
+                    <button id="run-demo" class="btn-terminal">Run Demo</button>
+                    <button id="copy-output" class="btn-terminal">Copy Output</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- DATA STRUCTURE: Project Content (from original project files) ---
         const projectsData = [
@@ -681,6 +657,99 @@
         document.getElementById('mobile-menu-button').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+
+        // --- Cyber UI: Matrix Background, Typewriter, Terminal Demo ---
+        (function initCyberUI(){
+            // Matrix
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext && canvas.getContext('2d');
+            if (ctx) {
+                let width, height, columns, drops;
+                const characters = '01ABCDEF<>/\\|[]{}()*&^%$#@!;:.,';
+                function resize() {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                    columns = Math.floor(width / 14);
+                    drops = new Array(columns).fill(1);
+                }
+                function draw() {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+                    ctx.fillRect(0,0,width,height);
+                    ctx.fillStyle = '#7efc4d';
+                    ctx.font = '13px Fira Code, monospace';
+                    for (let i=0;i<columns;i++){
+                        const text = characters.charAt(Math.floor(Math.random()*characters.length));
+                        ctx.fillText(text, i*14, drops[i]*14);
+                        if (drops[i]*14 > height && Math.random() > 0.975) drops[i]=0;
+                        drops[i]++;
+                    }
+                    requestAnimationFrame(draw);
+                }
+                window.addEventListener('resize', resize);
+                resize();
+                requestAnimationFrame(draw);
+            }
+
+            // Typewriter small accent after hero subtitle
+            const subtitle = document.getElementById('hero-subtitle');
+            if (subtitle) {
+                const tag = document.createElement('span');
+                tag.className = 'ml-2 neon-text';
+                subtitle.appendChild(tag);
+                const phrases = ['Cybersecurity Coder', 'Secure-by-Design', 'Pen-Test Mindset'];
+                let pIndex = 0, chIndex = 0, deleting = false;
+                function tick(){
+                    const cur = phrases[pIndex];
+                    if (!deleting) {
+                        tag.textContent = cur.slice(0, chIndex+1);
+                        chIndex++;
+                        if (chIndex === cur.length) { deleting = true; setTimeout(tick, 1200); return; }
+                    } else {
+                        tag.textContent = cur.slice(0, chIndex-1);
+                        chIndex--;
+                        if (chIndex === 0) { deleting = false; pIndex = (pIndex+1) % phrases.length; }
+                    }
+                    setTimeout(tick, deleting ? 70 : 90);
+                }
+                tick();
+            }
+
+            // Terminal modal logic
+            const terminalModal = document.getElementById('terminal-modal');
+            const terminalOutput = document.getElementById('terminal-output');
+            const openBtn = document.getElementById('open-terminal-btn');
+            const runBtn = document.getElementById('run-demo');
+            const copyBtn = document.getElementById('copy-output');
+
+            function openTerminal(){ if (!terminalModal) return; terminalModal.classList.remove('hidden'); terminalModal.classList.add('flex'); document.body.style.overflow = 'hidden'; terminalOutput.innerHTML = '' }
+            function closeTerminal(){ if (!terminalModal) return; terminalModal.classList.remove('flex'); terminalModal.classList.add('hidden'); terminalOutput.innerHTML = ''; document.body.style.overflow = ''; }
+            window.openTerminal = openTerminal; window.closeTerminal = closeTerminal;
+
+            if (openBtn) openBtn.addEventListener('click', openTerminal);
+            if (runBtn) runBtn.addEventListener('click', runDemo);
+            if (copyBtn) copyBtn.addEventListener('click', () => { navigator.clipboard.writeText(terminalOutput.innerText || '').then(()=>{ alert('Output copied to clipboard'); }).catch(()=>{ alert('Copy failed'); }) });
+
+            function appendLine(line, delay=0){ return new Promise(res => { setTimeout(()=>{ const el = document.createElement('div'); el.textContent = line; terminalOutput.appendChild(el); terminalOutput.scrollTop = terminalOutput.scrollHeight; res(); }, delay); }) }
+
+            // Simulated demo run showcasing 'secure' checks
+            function runDemo(){ if (!terminalOutput) return; terminalOutput.innerHTML='';
+                (async ()=>{
+                    await appendLine('[init] Running vulnerability scan...', 200);
+                    await appendLine('> Checking exposed endpoints...', 700);
+                    await appendLine('> Auth enforcement: OK', 500);
+                    await appendLine('> Rate limiting: WARN (recommend 429 on burst)', 600);
+                    await appendLine('> Sensitive data exposure: OK', 600);
+                    await appendLine('> Misconfigured CORS: OK', 400);
+                    await appendLine('> Privilege escalation paths: NO EVIDENCE', 700);
+                    await appendLine('[result] Remediation suggestions: 3 items', 800);
+                    await appendLine('  - Enforce stricter rate limiting policies', 400);
+                    await appendLine('  - Harden token lifetimes and rotation', 400);
+                    await appendLine('  - Add contextual guidance for sensitive flows', 400);
+                    await appendLine('[complete] Demo finished.', 800);
+                })();
+            }
+
+        })();
     </script>
 </body>
 </html>
