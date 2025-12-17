@@ -211,6 +211,20 @@
 
             <div class="lg:col-span-5 px-6 lg:px-0">
                 <div class="flex flex-col gap-6">
+                    <!-- Profile Avatar Placeholder -->
+                    <div class="flex justify-center mb-2">
+                        <div style="position: relative; width: 160px; height: 160px;">
+                            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, #00d4ff, #fbbf24, #10b981, #a78bfa); border-radius: 50%; opacity: 0.4; animation: spin 20s linear infinite;"></div>
+                            <div style="position: absolute; inset: 2px; background: linear-gradient(135deg, rgba(10,14,39,0.95), rgba(10,14,39,0.98)); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.15);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: #00d4ff; opacity: 0.7;">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align: center; color: #a0aec0; font-size: 12px; margin-top: -8px; margin-bottom: 8px;">Your profile photo here</p>
+
                     <div class="modern-card p-8 rounded-xl text-center">
                         <h3 class="text-lg font-extrabold text-blue-400 mb-2">ROI Delivered</h3>
                         <p class="text-4xl md:text-5xl font-black text-green-400 mb-2">$490K</p>
@@ -257,31 +271,40 @@
                 <div class="md:col-span-3 space-y-4">
                     <!-- UX / DESIGN -->
                     <div class="modern-card p-6 rounded-lg broad-skill">
-                        <h3 class="text-lg font-extrabold mb-3 text-purple-400">UX & Design Strategy (Figma Focus)</h3>
+                        <h3 class="text-lg font-extrabold mb-3 text-purple-400 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                            UX & Design Strategy (Figma Focus)
+                        </h3>
                         <div class="flex flex-wrap gap-3 text-sm">
-                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">Figma Prototyping</span>
-                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">User Flow Mapping</span>
-                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">Information Architecture</span>
-                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">UX Optimization</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">🎨 Figma Prototyping</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">✦ User Flow Mapping</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">◈ Information Architecture</span>
+                            <span class="bg-slate-800 text-purple-300 px-3 py-1 rounded-full">◉ UX Optimization</span>
                         </div>
                     </div>
                     <!-- DATA / ANALYTICS -->
                     <div class="modern-card p-6 rounded-lg broad-skill">
-                        <h3 class="text-lg font-extrabold mb-3 text-green-400">Data, Analytics & BI</h3>
+                        <h3 class="text-lg font-extrabold mb-3 text-green-400 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17v-4M8 17v-7"></path></svg>
+                            Data, Analytics & BI
+                        </h3>
                         <div class="flex flex-wrap gap-3 text-sm">
-                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">Pendo & Whatfix Analytics</span>
-                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">Power BI & Looker</span>
-                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">SQL Queries & Reporting</span>
-                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">A/B Testing Methodology</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">📊 Pendo & Whatfix Analytics</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">📈 Power BI & Looker</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">🔍 SQL Queries & Reporting</span>
+                            <span class="bg-slate-800 text-green-300 px-3 py-1 rounded-full">⚖️ A/B Testing Methodology</span>
                         </div>
                     </div>
                     <!-- TECHNICAL / TOOLING -->
                     <div class="modern-card p-6 rounded-lg broad-skill">
-                        <h3 class="text-lg font-extrabold mb-3 text-blue-400">Technical Literacy & Tooling</h3>
+                        <h3 class="text-lg font-extrabold mb-3 text-blue-400 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2"><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline><line x1="12" y1="12" x2="20" y2="7.5"></line><line x1="12" y1="12" x2="12" y2="21"></line><line x1="12" y1="12" x2="4" y2="7.5"></line></svg>
+                            Technical Literacy & Tooling
+                        </h3>
                         <div class="flex flex-wrap gap-3 text-sm">
-                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">HTML/CSS/JS (Dev Communication)</span>
-                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">CRM/CLM/HCM Configuration</span>
-                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">API Integration Concepts</span>
+                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">💻 HTML/CSS/JS</span>
+                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">⚙️ CRM/CLM/HCM</span>
+                            <span class="bg-slate-800 text-blue-300 px-3 py-1 rounded-full">🔌 API Integration</span>
                         </div>
                     </div>
                 </div>
@@ -355,7 +378,10 @@
                 <!-- Item 1: Whatfix -->
                 <div class="relative pl-10 pb-12">
                     <div class="absolute left-0 top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-[#15151e]"></div>
-                    <h4 class="font-bold text-xl text-blue-400">Digital Adoption Specialist, Whatfix</h4>
+                    <h4 class="font-bold text-xl text-blue-400 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><rect x="2" y="2" width="20" height="20" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"></rect><path d="M9 7h6M9 11h4M9 15h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+                        Digital Adoption Specialist, Whatfix
+                    </h4>
                     <p class="text-slate-300 text-sm mb-2">Feb 2022 - Present</p>
                     <p class="text-slate-400 text-sm">
                         Driving strategic digital adoption across 25+ Fortune 500 accounts (Merck, Microsoft). Focused on identifying business requirements, designing DAP solutions, and measuring success against client ROI goals.
@@ -365,7 +391,10 @@
                 <!-- Item 2: Awards/Cert -->
                 <div class="relative pl-10 pb-12">
                     <div class="absolute left-0 top-1 w-4 h-4 bg-yellow-500 rounded-full border-4 border-[#15151e]"></div>
-                    <h4 class="font-bold text-xl text-yellow-400">Key Recognition & Certification</h4>
+                    <h4 class="font-bold text-xl text-yellow-400 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        Key Recognition & Certification
+                    </h4>
                     <p class="text-slate-300 text-sm mb-2">FY23 H1 / 2024</p>
                     <ul class="text-slate-400 text-sm list-disc list-inside">
                         <li>Awarded Most Valuable Digital Adoption Advisor.</li>
@@ -377,7 +406,10 @@
                 <!-- Item 3: APSSDC -->
                 <div class="relative pl-10 pb-12">
                     <div class="absolute left-0 top-1 w-4 h-4 bg-green-500 rounded-full border-4 border-[#15151e]"></div>
-                    <h4 class="font-bold text-xl text-green-400">Front-End Developer, APSSDC</h4>
+                    <h4 class="font-bold text-xl text-green-400 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                        Front-End Developer, APSSDC
+                    </h4>
                     <p class="text-slate-300 text-sm mb-2">Feb 2021 - Nov 2021</p>
                     <p class="text-slate-400 text-sm">
                         Hands-on experience in the technical implementation of web experiences, strengthening ability to communicate effectively with engineering teams.
