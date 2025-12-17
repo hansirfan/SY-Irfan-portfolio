@@ -11,56 +11,161 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     
     <style>
-        /* Sherlaine-style resume theme (light, minimal, print-friendly) */
-        :root{--bg:#ffffff;--muted:#6b7280;--text:#0f172a;--accent:#111827}
-        html,body{height:100%;}
-        body{
-            margin:0; background:var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+        /* Fun Problem Solver Theme - Professional & Clean with Color Theory */
+        :root {
+            --dark-bg: #0a0e27;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            
+            /* Section accent colors */
+            --hero-accent: #00d4ff;
+            --competencies-accent: #fbbf24;
+            --projects-accent: #10b981;
+            --journey-accent: #a78bfa;
+            --contact-accent: #f87171;
         }
 
-        /* Page container */
-        .max-w-7xl{max-width:900px;margin-left:auto;margin-right:auto;padding-left:20px;padding-right:20px}
-
-        /* Headings use a serif for a resume-like tone */
-        h1,h2,h3,h4{font-family:Merriweather, Georgia, serif;color:var(--accent);margin-top:0}
-        h1{font-size:48px;margin-bottom:6px}
-        h2{font-size:20px;margin-bottom:6px}
-
-        /* Clean section separators */
-        .section-separator{height:1px;background:linear-gradient(90deg,transparent,var(--muted),transparent);margin:2.5rem 0}
-
-        /* Cards converted to simple panels */
-        .modern-card{background:transparent;border:0;padding:0;margin:0}
-
-        /* Two-column layout for larger screens: left column for name/contact */
-        .resume-row{display:flex;gap:40px;align-items:flex-start}
-        .resume-left{width:260px;flex:0 0 260px;padding-top:20px}
-        .resume-right{flex:1;padding-top:20px}
-
-        .contact-item{color:var(--muted);font-size:14px}
-
-        /* Make lists clean and compact */
-        ul{margin:0;padding-left:1.1rem}
-
-        /* Print-friendly tweaks */
-        @media print{
-            body{background:#fff;color:#000}
-            nav,footer,button{display:none}
-            .resume-row{gap:0}
+        * { box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
 
-        /* Small screens: stack columns */
-        @media (max-width:768px){
-            .resume-row{display:block}
-            .resume-left{width:auto;flex:auto}
+        /* Typography */
+        h1, h2, h3, h4 { margin-top: 0; line-height: 1.2; }
+        h1 { font-size: 56px; font-weight: 800; margin-bottom: 12px; }
+        h2 { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+        h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+
+        a { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; }
+
+        /* Focus states (WCAG accessible) */
+        button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 4px;
+        }
+
+        /* Section backgrounds with subtle gradients */
+        #home { background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(10,14,39,1) 100%); }
+        #competencies { background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(10,14,39,1) 100%); }
+        #projects { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(10,14,39,1) 100%); }
+        #journey { background: linear-gradient(135deg, rgba(167,139,250,0.08) 0%, rgba(10,14,39,1) 100%); }
+        #contact { background: linear-gradient(135deg, rgba(248,113,113,0.08) 0%, rgba(10,14,39,1) 100%); }
+
+        /* Section-specific text accents */
+        #home h2, #home .text-blue-400, #home .text-green-400 { color: var(--hero-accent); }
+        #competencies h2, #competencies .text-blue-400 { color: var(--competencies-accent); }
+        #projects h2, #projects .text-green-400 { color: var(--projects-accent); }
+        #journey h2, #journey .text-blue-400 { color: var(--journey-accent); }
+        #contact h2, #contact .text-blue-400 { color: var(--contact-accent); }
+
+        /* Modern Card styling */
+        .modern-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .modern-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        /* Hero gradient background */
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.05) 0%, var(--dark-bg) 100%);
+        }
+
+        /* Buttons with section-specific colors */
+        .bg-blue-600 {
+            background: var(--hero-accent);
+            color: var(--dark-bg);
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bg-blue-600:hover {
+            background: #00b8dd;
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Link hover effects */
+        .text-white.hover\:text-blue-400:hover {
+            color: var(--hero-accent);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+
+        /* Section separators */
+        .section-separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Container */
+        .max-w-7xl {
+            max-width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Skills & badge styling */
+        .bg-slate-800 {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        /* Reduced motion support (accessibility) */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+            html { scroll-behavior: auto !important; }
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: #fff; color: #000; }
+            nav, footer, button { display: none; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 24px; }
         }
     </style>
 </head>
 <body class="antialiased">
-
+    <!-- Skip to main content link (accessible) -->
+    <a href="#home" class="skip-link" style="position:absolute;top:-40px;left:0;background:#00d4ff;color:#0a0e27;padding:8px 16px;text-decoration:none;z-index:100;border-radius:0 0 8px 0;font-weight:700;">Skip to main content</a>
+    
     <!-- Navigation -->
-    <nav class="sticky top-0 w-full bg-black/95 backdrop-blur-md border-b border-gray-800 z-50 shadow-2xl">
+    <nav class="sticky top-0 w-full bg-black/90 backdrop-blur-md border-b border-white/5 z-50 shadow-xl" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <a href="#home" class="flex items-center gap-2 group">
@@ -69,13 +174,13 @@
                 
                 <div class="hidden md:flex space-x-8 text-sm font-semibold">
                     <a href="#home" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a>
-                    <a href="#competencies" class="text-white hover:text-blue-400 transition-colors duration-300">Competencies</a>
-                    <a href="#projects" class="text-white hover:text-blue-400 transition-colors duration-300">Impact Stories</a>
-                    <a href="#journey" class="text-white hover:text-blue-400 transition-colors duration-300">Experience</a>
-                    <a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a>
+                    <a href="#competencies" class="text-white hover:text-yellow-400 transition-colors duration-300">Competencies</a>
+                    <a href="#projects" class="text-white hover:text-green-400 transition-colors duration-300">Impact Stories</a>
+                    <a href="#journey" class="text-white hover:text-purple-400 transition-colors duration-300">Experience</a>
+                    <a href="#contact" class="text-white hover:text-red-400 transition-colors duration-300">Contact</a>
                 </div>
                 
-                <button id="mobile-menu-button" class="md:hidden text-white hover:text-blue-400">
+                <button id="mobile-menu-button" class="md:hidden text-white hover:text-blue-400" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
                 </button>
             </div>
@@ -112,14 +217,14 @@
                         <p class="text-sm text-slate-300">Single Enterprise Implementation (Siemens)</p>
                     </div>
                     <div class="modern-card p-8 rounded-xl text-center">
-                        <h3 class="text-lg font-extrabold text-purple-400 mb-2">Workflow Time Cut</h3>
-                        <p class="text-4xl md:text-5xl font-black text-purple-400 mb-2">50%</p>
-                        <p class="text-sm text-slate-300">Reduction (WSDOT)</p>
+                        <h3 class="text-lg font-extrabold text-purple-400 mb-2">Support Tickets Reduced</h3>
+                        <p class="text-4xl md:text-5xl font-black text-purple-400 mb-2">60%</p>
+                        <p class="text-sm text-slate-300">Reduction in Support Load</p>
                     </div>
                     <div class="modern-card p-8 rounded-xl text-center">
                         <h3 class="text-lg font-extrabold text-blue-400 mb-2">Retention Rate</h3>
                         <p class="text-4xl md:text-5xl font-black text-blue-400 mb-2">100%</p>
-                        <p class="text-sm text-slate-300">Across 25+ Enterprise Accounts</p>
+                        <p class="text-sm text-slate-300">Across 45+ Enterprise Accounts</p>
                     </div>
                 </div>
             </div>
@@ -642,9 +747,52 @@
             }, 5000);
         }
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle with ARIA
         document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            const isOpen = !menu.classList.contains('hidden');
+            
+            menu.classList.toggle('hidden');
+            button.setAttribute('aria-expanded', !isOpen);
+        });
+
+        // Skip link focus behavior
+        const skipLink = document.querySelector('.skip-link');
+        if (skipLink) {
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '0';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+        }
+
+        // Smooth scroll with reduced motion support
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.scrollBehavior = 'smooth';
+        }
+
+        // Section reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
         });
 
         
